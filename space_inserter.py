@@ -1,9 +1,6 @@
-from treelib import Tree
 from echo import MORSE, ALPHABET
 
-S = "...---..."
-T = Tree()
-T.create_node("_")  # root
+SL = ["...---..."]
 UL = ['.-..-...-.']
 
 
@@ -12,18 +9,6 @@ def morse_to_char(morse_string):
         if MORSE[i] == morse_string:
             return ALPHABET[i]
     raise ValueError
-
-
-def pop_all_possibilities(morse, tree):
-    for n_dits in range(1, 5):
-        morse_char = morse[0:n_dits]
-        morse_tail = morse[n_dits:]
-        try:
-            my_char = morse_to_char(morse_char)
-            tree.create_node(my_char)
-        except ValueError:
-            pass
-    return morse_tail, tree
 
 
 def expand_once(morse_list):
@@ -51,9 +36,19 @@ def expand_once(morse_list):
     return new_list
 
 
+def full_expand(x):
+    for i in range(len(x[0])):
+        x = expand_once(x)
+        if '-' not in x[0] and '.' not in x[0]:
+            return set(x)
+
+
 if __name__ == '__main__':
-    for i in range(len(UL[0])):
-        UL = expand_once(UL)
-        if '-' not in UL[0] and '.' not in UL[0]:
-            print(UL)
-            break
+    s = full_expand(SL)
+    print(s)
+    print(len(s))
+    print()
+    print()
+    s = full_expand(UL)
+    print(s)
+    print(len(s))
