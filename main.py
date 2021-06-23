@@ -1,14 +1,18 @@
-from echo import echo, MORSE, ALPHABET
+from echo import echo, MORSE, ALPHABET, full_expand
+
+# Silly alfa lima foxtrot alfa.
 
 S = 'The quick brown fox jumps over the lazy dogs'
 
 print(echo(S))
 print()
-print()
 print(echo(echo(S)))
 print()
-print()
 print(echo(echo('Hi')))
+print()
+print()
+
+# Prosigns
 
 EQUIVALENT_PROSIGNS = []
 
@@ -36,3 +40,21 @@ print(N_EDGES, "edges in complete graph")
 print(len(EQUIVALENT_PROSIGNS) / 2, "equiv. prosigns, excluding dups")
 PROPORTION = len(EQUIVALENT_PROSIGNS) / 2 / N_EDGES
 print(PROPORTION, "proportion of edges are equivalent")
+print()
+print()
+
+# Expand unspaced morse to all text possibilities
+
+SOS = ["...---..."]
+UNKNOWN = ['.-..-...-.']
+
+print(SOS)
+s = full_expand(SOS)
+print(s)
+print(len(s))
+print()
+
+print(UNKNOWN)
+s = full_expand(UNKNOWN)
+print(s)
+print(len(s))
