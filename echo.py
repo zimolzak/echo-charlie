@@ -7,6 +7,7 @@ MORSE = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
          "--.-", ".-.", "...", "-", "..-", "...-",
          ".--", "-..-", "-.--", "--.."]
 
+
 def echo(input_string):
     """Replace all letters in a string with their phonetic alphabet
     words.
@@ -26,4 +27,5 @@ def echo(input_string):
     output_string = output_string.replace(',,', ';')
     output_string = output_string.capitalize()
     return output_string
+
 
